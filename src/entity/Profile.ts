@@ -13,4 +13,5 @@ export class Profile {
 
   @Column()
   language!: string;
+
 }
