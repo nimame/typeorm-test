@@ -21,7 +21,7 @@ const disconnectDB = async () => {
 };
 
 
-describe('Connect', () => {
+describe('Limit joined results', () => {
 
   beforeEach(async () => {
     await connectDb();
@@ -32,34 +32,30 @@ describe('Connect', () => {
     await disconnectDB();
   });
 
-  describe('Limit joined results', () => {
+  it('Should return 3 items when using take(3)', async () => {
 
-    it('Should return 3 items when using take(3)', async () => {
+    const groups = await getRepository(Group)
+      .createQueryBuilder('g')
+      .leftJoinAndSelect('g.members', 'u')
+      .take(3)
+      .getMany();
 
-      const groups = await getRepository(Group)
-        .createQueryBuilder('g')
-        .leftJoinAndSelect('g.members', 'u')
-        .take(3)
-        .getMany();
+    expect(groups.length).to.equal(3);
 
-      expect(groups.length).to.equal(3);
+  });
 
-    });
+  it('Should return 3 items when sorting by User.id and using take(3)', async () => {
 
-    it('Should return 3 items when sorting by User.id and using take(3)', async () => {
+    const groups = await getRepository(Group)
+      .createQueryBuilder('g')
+      .leftJoinAndSelect('g.members', 'u')
+      .orderBy('g.id')
+      .addOrderBy('u.id')
+      .take(3)
+      .getMany();
 
-      const groups = await getRepository(Group)
-        .createQueryBuilder('g')
-        .leftJoinAndSelect('g.members', 'u')
-        .orderBy('g.id')
-        .addOrderBy('u.id')
-        .take(3)
-        .getMany();
+    expect(groups.length).to.equal(3);
 
-      expect(groups.length).to.equal(3);
-
-    });
-
-  })
+  });
 
 });
