@@ -1,0 +1,25 @@
+{
+  "name": "typeorm-test",
+  "version": "0.0.1",
+  "description": "TypeORM examples",
+  "license": "MIT",
+  "repository": "https://github.com/nimame/typeorm-test.git",
+  "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^8.0.29",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1",
+    "ts-node": "^3.3.0",
+    "typeorm-fixtures-cli": "^1.5.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "typeorm": "0.2.22",
+    "reflect-metadata": "^0.1.10",
+    "pg": "^7.3.0"
+  },
+  "scripts": {
+    "test": "mocha -w --watch-files src -r ts-node/register src/**/*.ts"
+  }
+}

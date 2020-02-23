@@ -1,0 +1,26 @@
+entity: Group
+parameters:
+  names:
+    admin: Admin
+items:
+  group1:
+    name: '<{names.admin}>'
+    owner: '@user1'
+    members:
+      - '@user1'
+      - '@user2'
+  group2:
+    name: '<{names.admin}>'
+    owner: '@user1'
+    members:
+      - '@user3'
+  group3:
+    name: '<{names.admin}>'
+    owner: '@user1'
+    members:
+      - '@user4'
+  group4:
+    name: '<{names.admin}>'
+    owner: '@user1'
+    members:
+      - '@user5'

@@ -1,0 +1,6 @@
+entity: Profile
+items:
+  profile{1..5}:
+    aboutMe: '{{lorem.sentence}}'
+    skype: '{{internet.userName}}'
+    language: '{{random.locale}}'

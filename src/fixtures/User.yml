@@ -1,0 +1,12 @@
+entity: User
+parameters: {}
+items:
+  user{1..5}:
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    name: '{{internet.userName}}'
+    email: '{{internet.email}}'
+    profile: '@profile($current)'
+    __call:
+      setPassword:
+        - foo
